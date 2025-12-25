@@ -689,4 +689,147 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    // ========================================
+    // HALF-MOON REVIEWS CAROUSEL
+    // ========================================
+    const halfmoonCarousel = {
+        container: document.getElementById('halfmoon-reviews'),
+        toggle: document.getElementById('halfmoon-toggle'),
+        carousel: document.getElementById('halfmoon-carousel'),
+        slides: document.querySelectorAll('.review-slide'),
+        dots: document.querySelectorAll('.halfmoon-dots .dot'),
+        currentSlide: 0,
+        totalSlides: 5,
+        autoPlayInterval: null,
+        autoPlayDelay: 4000, // 4 seconds per slide
+        isPlaying: true,
+
+        init() {
+            if (!this.container || !this.slides.length) return;
+            
+            this.bindEvents();
+            this.startAutoPlay();
+        },
+
+        bindEvents() {
+            // Toggle button - expand/collapse the carousel
+            if (this.toggle) {
+                this.toggle.addEventListener('click', () => {
+                    this.container.classList.toggle('collapsed');
+                    if (this.container.classList.contains('collapsed')) {
+                        this.pauseAutoPlay();
+                    } else {
+                        this.startAutoPlay();
+                    }
+                });
+            }
+
+            // Dot navigation
+            this.dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    this.goToSlide(index);
+                    this.resetAutoPlay();
+                });
+            });
+
+            // Pause on hover
+            if (this.carousel) {
+                this.carousel.addEventListener('mouseenter', () => this.pauseAutoPlay());
+                this.carousel.addEventListener('mouseleave', () => this.startAutoPlay());
+            }
+
+            // Touch/Swipe support for mobile
+            this.addSwipeSupport();
+        },
+
+        goToSlide(index) {
+            // Mark current slide as exiting
+            this.slides[this.currentSlide].classList.add('exiting');
+            this.slides[this.currentSlide].classList.remove('active');
+            this.dots[this.currentSlide].classList.remove('active');
+
+            // Update current index
+            this.currentSlide = index;
+
+            // Handle infinite loop
+            if (this.currentSlide >= this.totalSlides) {
+                this.currentSlide = 0;
+            } else if (this.currentSlide < 0) {
+                this.currentSlide = this.totalSlides - 1;
+            }
+
+            // Activate new slide
+            setTimeout(() => {
+                this.slides.forEach(slide => slide.classList.remove('exiting'));
+                this.slides[this.currentSlide].classList.add('active');
+                this.dots[this.currentSlide].classList.add('active');
+            }, 50);
+        },
+
+        nextSlide() {
+            this.goToSlide(this.currentSlide + 1);
+        },
+
+        prevSlide() {
+            this.goToSlide(this.currentSlide - 1);
+        },
+
+        startAutoPlay() {
+            if (this.container.classList.contains('collapsed')) return;
+            
+            if (this.autoPlayInterval) {
+                clearInterval(this.autoPlayInterval);
+            }
+            this.isPlaying = true;
+            this.autoPlayInterval = setInterval(() => {
+                this.nextSlide();
+            }, this.autoPlayDelay);
+        },
+
+        pauseAutoPlay() {
+            if (this.autoPlayInterval) {
+                clearInterval(this.autoPlayInterval);
+                this.autoPlayInterval = null;
+            }
+            this.isPlaying = false;
+        },
+
+        resetAutoPlay() {
+            this.pauseAutoPlay();
+            this.startAutoPlay();
+        },
+
+        addSwipeSupport() {
+            if (!this.carousel) return;
+            
+            let startX = 0;
+            let endX = 0;
+            const threshold = 50;
+
+            this.carousel.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+                this.pauseAutoPlay();
+            }, { passive: true });
+
+            this.carousel.addEventListener('touchmove', (e) => {
+                endX = e.touches[0].clientX;
+            }, { passive: true });
+
+            this.carousel.addEventListener('touchend', () => {
+                const diff = startX - endX;
+                if (Math.abs(diff) > threshold) {
+                    if (diff > 0) {
+                        this.nextSlide();
+                    } else {
+                        this.prevSlide();
+                    }
+                }
+                this.startAutoPlay();
+            });
+        }
+    };
+
+    // Initialize half-moon reviews carousel
+    halfmoonCarousel.init();
 });

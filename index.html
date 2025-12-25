@@ -70,32 +70,188 @@
 
     <!-- Hero Section with Carousel -->
     <section class="hero" id="hero">
-        <!-- Google Reviews Floating Badge -->
-        <div class="google-reviews-badge">
-            <div class="badge-inner">
-                <div class="google-logo">
+        <!-- Half-Moon Reviews Carousel -->
+        <div class="halfmoon-reviews" id="halfmoon-reviews">
+            <!-- Half Moon Container -->
+            <div class="halfmoon-container">
+                <!-- Decorative Arc -->
+                <div class="halfmoon-arc"></div>
+                
+                <!-- Toggle Button -->
+                <button class="halfmoon-toggle" id="halfmoon-toggle" aria-label="Toggle reviews">
                     <svg viewBox="0 0 24 24" fill="none">
-                        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-                        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-                        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
-                        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor"/>
                     </svg>
-                </div>
-                <div class="badge-content">
-                    <div class="rating-stars">
-                        <svg viewBox="0 0 20 20" fill="#FFD700"><path d="M10 1l2.39 6.36H19l-5.19 4.28 2.04 6.36L10 13.72l-5.85 4.28 2.04-6.36L1 7.36h6.61L10 1z"/></svg>
-                        <svg viewBox="0 0 20 20" fill="#FFD700"><path d="M10 1l2.39 6.36H19l-5.19 4.28 2.04 6.36L10 13.72l-5.85 4.28 2.04-6.36L1 7.36h6.61L10 1z"/></svg>
-                        <svg viewBox="0 0 20 20" fill="#FFD700"><path d="M10 1l2.39 6.36H19l-5.19 4.28 2.04 6.36L10 13.72l-5.85 4.28 2.04-6.36L1 7.36h6.61L10 1z"/></svg>
-                        <svg viewBox="0 0 20 20" fill="#FFD700"><path d="M10 1l2.39 6.36H19l-5.19 4.28 2.04 6.36L10 13.72l-5.85 4.28 2.04-6.36L1 7.36h6.61L10 1z"/></svg>
-                        <svg viewBox="0 0 20 20" fill="#FFD700"><path d="M10 1l2.39 6.36H19l-5.19 4.28 2.04 6.36L10 13.72l-5.85 4.28 2.04-6.36L1 7.36h6.61L10 1z" fill-opacity="0.5"/></svg>
+                    <span class="toggle-label">Reviews</span>
+                </button>
+                
+                <!-- Reviews Carousel -->
+                <div class="halfmoon-carousel" id="halfmoon-carousel">
+                    <!-- Carousel Track -->
+                    <div class="carousel-track" id="reviews-track">
+                        <!-- Google Review -->
+                        <div class="review-slide active" data-platform="google">
+                            <div class="review-card">
+                                <div class="review-glow"></div>
+                                <div class="review-quote-icon">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/>
+                                    </svg>
+                                </div>
+                                <div class="review-platform-badge">
+                                    <svg viewBox="0 0 24 24" fill="none">
+                                        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                                        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                                        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                                        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                                    </svg>
+                                </div>
+                                <div class="review-content">
+                                    <div class="review-stars">
+                                        <svg viewBox="0 0 20 20" fill="#FFD700"><path d="M10 1l2.39 6.36H19l-5.19 4.28 2.04 6.36L10 13.72l-5.85 4.28 2.04-6.36L1 7.36h6.61L10 1z"/></svg>
+                                        <svg viewBox="0 0 20 20" fill="#FFD700"><path d="M10 1l2.39 6.36H19l-5.19 4.28 2.04 6.36L10 13.72l-5.85 4.28 2.04-6.36L1 7.36h6.61L10 1z"/></svg>
+                                        <svg viewBox="0 0 20 20" fill="#FFD700"><path d="M10 1l2.39 6.36H19l-5.19 4.28 2.04 6.36L10 13.72l-5.85 4.28 2.04-6.36L1 7.36h6.61L10 1z"/></svg>
+                                        <svg viewBox="0 0 20 20" fill="#FFD700"><path d="M10 1l2.39 6.36H19l-5.19 4.28 2.04 6.36L10 13.72l-5.85 4.28 2.04-6.36L1 7.36h6.61L10 1z"/></svg>
+                                        <svg viewBox="0 0 20 20" fill="#FFD700"><path d="M10 1l2.39 6.36H19l-5.19 4.28 2.04 6.36L10 13.72l-5.85 4.28 2.04-6.36L1 7.36h6.61L10 1z" fill-opacity="0.5"/></svg>
+                                    </div>
+                                    <span class="review-rating">4.5</span>
+                                    <span class="review-platform-name">Google</span>
+                                    <span class="review-count">4.0K+ Reviews</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- MakeMyTrip Review -->
+                        <div class="review-slide" data-platform="makemytrip">
+                            <div class="review-card">
+                                <div class="review-glow mmt"></div>
+                                <div class="review-quote-icon">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/>
+                                    </svg>
+                                </div>
+                                <div class="review-platform-badge mmt">
+                                    <svg viewBox="0 0 40 40" fill="none">
+                                        <rect width="40" height="40" rx="8" fill="#EB2026"/>
+                                        <circle cx="20" cy="20" r="10" fill="#fff"/>
+                                        <text x="20" y="24" text-anchor="middle" font-family="Arial" font-size="10" font-weight="bold" fill="#EB2026">M</text>
+                                    </svg>
+                                </div>
+                                <div class="review-content">
+                                    <div class="review-stars">
+                                        <svg viewBox="0 0 20 20" fill="#FFD700"><path d="M10 1l2.39 6.36H19l-5.19 4.28 2.04 6.36L10 13.72l-5.85 4.28 2.04-6.36L1 7.36h6.61L10 1z"/></svg>
+                                        <svg viewBox="0 0 20 20" fill="#FFD700"><path d="M10 1l2.39 6.36H19l-5.19 4.28 2.04 6.36L10 13.72l-5.85 4.28 2.04-6.36L1 7.36h6.61L10 1z"/></svg>
+                                        <svg viewBox="0 0 20 20" fill="#FFD700"><path d="M10 1l2.39 6.36H19l-5.19 4.28 2.04 6.36L10 13.72l-5.85 4.28 2.04-6.36L1 7.36h6.61L10 1z"/></svg>
+                                        <svg viewBox="0 0 20 20" fill="#FFD700"><path d="M10 1l2.39 6.36H19l-5.19 4.28 2.04 6.36L10 13.72l-5.85 4.28 2.04-6.36L1 7.36h6.61L10 1z"/></svg>
+                                        <svg viewBox="0 0 20 20" fill="#FFD700"><path d="M10 1l2.39 6.36H19l-5.19 4.28 2.04 6.36L10 13.72l-5.85 4.28 2.04-6.36L1 7.36h6.61L10 1z" fill-opacity="0.3"/></svg>
+                                    </div>
+                                    <span class="review-rating">4.3</span>
+                                    <span class="review-platform-name">MakeMyTrip</span>
+                                    <span class="review-count">2.5K+ Reviews</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Booking.com Review -->
+                        <div class="review-slide" data-platform="booking">
+                            <div class="review-card">
+                                <div class="review-glow booking"></div>
+                                <div class="review-quote-icon">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/>
+                                    </svg>
+                                </div>
+                                <div class="review-platform-badge booking">
+                                    <svg viewBox="0 0 40 40" fill="none">
+                                        <rect width="40" height="40" rx="8" fill="#003580"/>
+                                        <text x="20" y="26" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#fff">B.</text>
+                                    </svg>
+                                </div>
+                                <div class="review-content">
+                                    <div class="review-stars">
+                                        <svg viewBox="0 0 20 20" fill="#FFD700"><path d="M10 1l2.39 6.36H19l-5.19 4.28 2.04 6.36L10 13.72l-5.85 4.28 2.04-6.36L1 7.36h6.61L10 1z"/></svg>
+                                        <svg viewBox="0 0 20 20" fill="#FFD700"><path d="M10 1l2.39 6.36H19l-5.19 4.28 2.04 6.36L10 13.72l-5.85 4.28 2.04-6.36L1 7.36h6.61L10 1z"/></svg>
+                                        <svg viewBox="0 0 20 20" fill="#FFD700"><path d="M10 1l2.39 6.36H19l-5.19 4.28 2.04 6.36L10 13.72l-5.85 4.28 2.04-6.36L1 7.36h6.61L10 1z"/></svg>
+                                        <svg viewBox="0 0 20 20" fill="#FFD700"><path d="M10 1l2.39 6.36H19l-5.19 4.28 2.04 6.36L10 13.72l-5.85 4.28 2.04-6.36L1 7.36h6.61L10 1z"/></svg>
+                                        <svg viewBox="0 0 20 20" fill="#FFD700"><path d="M10 1l2.39 6.36H19l-5.19 4.28 2.04 6.36L10 13.72l-5.85 4.28 2.04-6.36L1 7.36h6.61L10 1z" fill-opacity="0.7"/></svg>
+                                    </div>
+                                    <span class="review-rating">8.7/10</span>
+                                    <span class="review-platform-name">Booking.com</span>
+                                    <span class="review-count">1.8K+ Reviews</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Agoda Review -->
+                        <div class="review-slide" data-platform="agoda">
+                            <div class="review-card">
+                                <div class="review-glow agoda"></div>
+                                <div class="review-quote-icon">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/>
+                                    </svg>
+                                </div>
+                                <div class="review-platform-badge agoda">
+                                    <svg viewBox="0 0 40 40" fill="none">
+                                        <rect width="40" height="40" rx="8" fill="#5391D0"/>
+                                        <text x="20" y="26" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#fff">A</text>
+                                    </svg>
+                                </div>
+                                <div class="review-content">
+                                    <div class="review-stars">
+                                        <svg viewBox="0 0 20 20" fill="#FFD700"><path d="M10 1l2.39 6.36H19l-5.19 4.28 2.04 6.36L10 13.72l-5.85 4.28 2.04-6.36L1 7.36h6.61L10 1z"/></svg>
+                                        <svg viewBox="0 0 20 20" fill="#FFD700"><path d="M10 1l2.39 6.36H19l-5.19 4.28 2.04 6.36L10 13.72l-5.85 4.28 2.04-6.36L1 7.36h6.61L10 1z"/></svg>
+                                        <svg viewBox="0 0 20 20" fill="#FFD700"><path d="M10 1l2.39 6.36H19l-5.19 4.28 2.04 6.36L10 13.72l-5.85 4.28 2.04-6.36L1 7.36h6.61L10 1z"/></svg>
+                                        <svg viewBox="0 0 20 20" fill="#FFD700"><path d="M10 1l2.39 6.36H19l-5.19 4.28 2.04 6.36L10 13.72l-5.85 4.28 2.04-6.36L1 7.36h6.61L10 1z"/></svg>
+                                        <svg viewBox="0 0 20 20" fill="#FFD700"><path d="M10 1l2.39 6.36H19l-5.19 4.28 2.04 6.36L10 13.72l-5.85 4.28 2.04-6.36L1 7.36h6.61L10 1z" fill-opacity="0.4"/></svg>
+                                    </div>
+                                    <span class="review-rating">8.5/10</span>
+                                    <span class="review-platform-name">Agoda</span>
+                                    <span class="review-count">1.2K+ Reviews</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- JustDial Review -->
+                        <div class="review-slide" data-platform="justdial">
+                            <div class="review-card">
+                                <div class="review-glow justdial"></div>
+                                <div class="review-quote-icon">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/>
+                                    </svg>
+                                </div>
+                                <div class="review-platform-badge justdial">
+                                    <svg viewBox="0 0 40 40" fill="none">
+                                        <rect width="40" height="40" rx="8" fill="#FFC107"/>
+                                        <text x="20" y="26" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="#333">JD</text>
+                                    </svg>
+                                </div>
+                                <div class="review-content">
+                                    <div class="review-stars">
+                                        <svg viewBox="0 0 20 20" fill="#FFD700"><path d="M10 1l2.39 6.36H19l-5.19 4.28 2.04 6.36L10 13.72l-5.85 4.28 2.04-6.36L1 7.36h6.61L10 1z"/></svg>
+                                        <svg viewBox="0 0 20 20" fill="#FFD700"><path d="M10 1l2.39 6.36H19l-5.19 4.28 2.04 6.36L10 13.72l-5.85 4.28 2.04-6.36L1 7.36h6.61L10 1z"/></svg>
+                                        <svg viewBox="0 0 20 20" fill="#FFD700"><path d="M10 1l2.39 6.36H19l-5.19 4.28 2.04 6.36L10 13.72l-5.85 4.28 2.04-6.36L1 7.36h6.61L10 1z"/></svg>
+                                        <svg viewBox="0 0 20 20" fill="#FFD700"><path d="M10 1l2.39 6.36H19l-5.19 4.28 2.04 6.36L10 13.72l-5.85 4.28 2.04-6.36L1 7.36h6.61L10 1z"/></svg>
+                                        <svg viewBox="0 0 20 20" fill="#FFD700"><path d="M10 1l2.39 6.36H19l-5.19 4.28 2.04 6.36L10 13.72l-5.85 4.28 2.04-6.36L1 7.36h6.61L10 1z" fill-opacity="0.6"/></svg>
+                                    </div>
+                                    <span class="review-rating">4.6</span>
+                                    <span class="review-platform-name">JustDial</span>
+                                    <span class="review-count">890+ Reviews</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="rating-score">4.5</div>
+                    
+                    <!-- Carousel Navigation Dots -->
+                    <div class="halfmoon-dots">
+                        <span class="dot active" data-slide="0"></span>
+                        <span class="dot" data-slide="1"></span>
+                        <span class="dot" data-slide="2"></span>
+                        <span class="dot" data-slide="3"></span>
+                        <span class="dot" data-slide="4"></span>
+                    </div>
                 </div>
-                <div class="review-count">
-                    <span class="count-number">4.0K</span>
-                    <span class="count-label">Reviews</span>
-                </div>
-                <div class="badge-cta">View on Google</div>
             </div>
         </div>
 
@@ -1001,11 +1157,11 @@
                 </span>
                 Rooms
             </button>
-            <button class="gallery-tab" data-filter="wellness">
+            <button class="gallery-tab" data-filter="rooftop">
                 <span class="tab-icon">
-                    <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M3 21h18M5 21V7l7-5 7 5v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 21v-6h6v6M4 10h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
                 </span>
-                Wellness
+                Rooftop
             </button>
         </div>
 
@@ -1138,19 +1294,51 @@
                 </div>
             </div>
 
-            <!-- Wellness - Pool -->
-            <div class="gallery-item gallery-wide" data-category="wellness">
-                <img src="images/hotel_pool_1766572388852.png" alt="Swimming Pool">
+            <!-- Rooftop Views -->
+            <div class="gallery-item gallery-wide" data-category="rooftop">
+                <img src="images/rooftop.jpg" alt="Rooftop Terrace">
                 <div class="gallery-overlay">
-                    <span class="gallery-label">Swimming Pool</span>
+                    <span class="gallery-label">Rooftop Terrace</span>
                 </div>
             </div>
 
-            <!-- Wellness - Spa -->
-            <div class="gallery-item" data-category="wellness">
-                <img src="images/hotel_spa_1766572438797.png" alt="Spa & Wellness">
+            <!-- Rooftop 2 -->
+            <div class="gallery-item" data-category="rooftop">
+                <img src="images/rooftop2.jpg" alt="Scenic Views">
                 <div class="gallery-overlay">
-                    <span class="gallery-label">Spa & Wellness</span>
+                    <span class="gallery-label">Scenic Views</span>
+                </div>
+            </div>
+
+            <!-- Rooftop 3 -->
+            <div class="gallery-item gallery-tall" data-category="rooftop">
+                <img src="images/rooftop3.jpg" alt="Rooftop Ambiance">
+                <div class="gallery-overlay">
+                    <span class="gallery-label">Rooftop Ambiance</span>
+                </div>
+            </div>
+
+            <!-- Dining Gallery -->
+            <div class="gallery-item gallery-large" data-category="cuisine">
+                <img src="images/diningGallery.jpeg" alt="Fine Dining">
+                <div class="gallery-overlay">
+                    <span class="gallery-label">Fine Dining</span>
+                </div>
+            </div>
+
+            <!-- Dining Experience -->
+            <div class="gallery-item" data-category="cuisine">
+                <img src="images/diningGallery2.jpg" alt="Restaurant Interior">
+                <div class="gallery-overlay">
+                    <span class="gallery-label">Restaurant Interior</span>
+                </div>
+            </div>
+
+            <!-- Premium Dining -->
+            <div class="gallery-item" data-category="cuisine">
+                <img src="images/diningGallery4.jpg" alt="Premium Dining">
+                <div class="gallery-overlay">
+                    <span class="gallery-label">Premium Dining</span>
                 </div>
             </div>
         </div>
@@ -1169,14 +1357,15 @@
             <div class="location-map">
                 <div class="map-wrapper">
                     <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3662.4981611749566!2d85.32967347520827!3d23.363618078981447!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f4e19ff tried2ba3%3A0x1234567890abcdef!2sCapitol%20Residency%2C%20Ranchi!5e0!3m2!1sen!2sin!4v1703500000000!5m2!1sen!2sin"
+                        src="https://www.google.com/maps?q=23.3498229,85.3304672&z=16&output=embed" 
                         width="100%" 
                         height="100%" 
                         style="border:0;" 
-                        allowfullscreen="" 
+                        allowfullscreen 
                         loading="lazy" 
                         referrerpolicy="no-referrer-when-downgrade">
                     </iframe>
+
                     <div class="map-pin">
                         <svg viewBox="0 0 24 24" fill="none">
                             <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="currentColor"/>
