@@ -2969,9 +2969,19 @@ img {
    CONTACT SECTION
    ============================================ */
 .contact-section {
-    background: var(--color-white);
+    background: url('images/texture.jpg') center/cover no-repeat;
     padding: 30px 0;
     position: relative;
+}
+
+.contact-section .section-header {
+    position: relative;
+    z-index: 1;
+}
+
+.contact-section .section-title,
+.contact-section .section-subtitle {
+    text-shadow: 0 2px 10px rgba(255, 255, 255, 0.8);
 }
 
 .contact-container {
@@ -2981,6 +2991,8 @@ img {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 var(--container-padding);
+    position: relative;
+    z-index: 1;
 }
 
 /* Contact Info Cards */
@@ -2995,15 +3007,17 @@ img {
     align-items: flex-start;
     gap: 20px;
     padding: 25px;
-    background: #f8f6f1;
+    background: rgba(255, 255, 255, 0.95);
     border-radius: 12px;
     border-left: 4px solid var(--color-gold);
     transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
 }
 
 .info-card:hover {
     transform: translateX(5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
 }
 
 .info-icon {
@@ -3040,9 +3054,11 @@ img {
 
 /* Contact Form */
 .contact-form-wrapper {
-    background: #f8f6f1;
+    background: rgba(255, 255, 255, 0.95);
     padding: 40px;
     border-radius: 16px;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.12);
+    backdrop-filter: blur(10px);
 }
 
 .form-title {
