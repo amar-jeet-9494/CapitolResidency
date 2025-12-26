@@ -2356,7 +2356,7 @@ img {
    ============================================ */
 .location-section {
     background: var(--color-black);
-    padding: 80px 0;
+    padding: 30px 0;
     position: relative;
 }
 
@@ -2970,7 +2970,7 @@ img {
    ============================================ */
 .contact-section {
     background: var(--color-white);
-    padding: 50px 0;
+    padding: 30px 0;
     position: relative;
 }
 
@@ -3161,7 +3161,7 @@ img {
 }
 
 .footer-logo-img {
-    height: 70px;
+    height: 40px;
     width: auto;
     transition: transform 0.3s ease, filter 0.3s ease;
 }
@@ -3396,6 +3396,472 @@ img {
         flex-wrap: wrap;
         justify-content: center;
         gap: 15px;
+    }
+}
+
+/* Gallery CTA Button */
+.gallery-cta {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.btn-view-gallery {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 40px;
+    background: transparent;
+    border: 2px solid var(--color-gold);
+    border-radius: 50px;
+    color: var(--color-gold);
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-view-gallery::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+    transition: left 0.5s ease;
+    z-index: 0;
+}
+
+.btn-view-gallery:hover::before {
+    left: 100%;
+}
+
+.btn-view-gallery:hover {
+    background: var(--color-gold);
+    color: var(--color-black);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(184, 163, 105, 0.3);
+}
+
+.btn-view-gallery .btn-text {
+    position: relative;
+    z-index: 1;
+}
+
+.btn-view-gallery .btn-icon {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.btn-view-gallery .btn-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.btn-view-gallery:hover .btn-icon {
+    transform: translateX(5px);
+}
+
+/* ============================================
+   FAQ SECTION WITH DIAMOND COLLAGE
+   ============================================ */
+.faq-section {
+    background: linear-gradient(180deg, #f8f6f1 0%, var(--color-white) 100%);
+    padding: 30px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.faq-section .section-header {
+    margin-bottom: 60px;
+}
+
+/* FAQ Wrapper - Two Column Layout */
+.faq-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 500px;
+    gap: 60px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+    align-items: start;
+}
+
+/* FAQ Container */
+.faq-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* FAQ Items */
+.faq-item {
+    background: var(--color-white);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(184, 163, 105, 0.15);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+    border-color: rgba(184, 163, 105, 0.4);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+}
+
+.faq-item.active {
+    border-color: var(--color-gold);
+}
+
+.faq-question {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    gap: 15px;
+    transition: all 0.3s ease;
+}
+
+.faq-question:hover {
+    background: rgba(184, 163, 105, 0.05);
+}
+
+.faq-question span {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-black);
+    line-height: 1.4;
+}
+
+.faq-icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    color: var(--color-gold);
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-icon {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s ease;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 300px;
+    padding: 0 25px 20px;
+}
+
+.faq-answer p {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--color-gray-dark);
+    line-height: 1.7;
+}
+
+/* FAQ Collage */
+.faq-collage {
+    position: relative;
+    min-height: 550px;
+}
+
+.collage-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Decorative Elements */
+.collage-decoration {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.collage-decoration svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* Diamond Grid */
+.diamond-grid {
+    position: relative;
+    width: 100%;
+    height: 550px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 15px;
+    padding: 20px;
+}
+
+/* Individual Diamonds */
+.diamond {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    transform: rotate(0deg);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.diamond::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(184, 163, 105, 0.2) 0%, transparent 50%);
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.diamond:hover::before {
+    opacity: 1;
+}
+
+.diamond img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.diamond:hover img {
+    transform: scale(1.1);
+}
+
+.diamond:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Diamond Overlay */
+.diamond-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 15px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+.diamond:hover .diamond-overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.diamond-overlay span {
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-white);
+    letter-spacing: 0.05em;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Diamond Positions - Create diagonal pattern */
+.diamond-1 {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    clip-path: polygon(15% 0, 100% 0, 100% 85%, 85% 100%, 0 100%, 0 15%);
+}
+
+.diamond-2 {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    clip-path: polygon(0 0, 85% 0, 100% 15%, 100% 100%, 15% 100%, 0 85%);
+}
+
+.diamond-3 {
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
+    clip-path: polygon(0 15%, 15% 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.diamond-4 {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 85% 100%, 0 85%);
+}
+
+.diamond-5 {
+    grid-column: 2 / 3;
+    grid-row: 2 / 2;
+    clip-path: polygon(15% 0, 85% 0, 100% 10%, 100% 90%, 85% 100%, 15% 100%, 0 90%, 0 10%);
+}
+
+.diamond-6 {
+    grid-column: 3 / 4;
+    grid-row: 2 / 3;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 15% 100%, 0 100%);
+}
+
+/* Collage Accent */
+.collage-accent {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    z-index: 10;
+}
+
+.accent-line {
+    width: 40px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+}
+
+.accent-text {
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-gold);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+/* FAQ Section Responsive */
+@media (max-width: 1200px) {
+    .faq-wrapper {
+        grid-template-columns: 1fr 420px;
+        gap: 40px;
+    }
+    
+    .diamond-grid {
+        height: 480px;
+    }
+}
+
+@media (max-width: 992px) {
+    .faq-section {
+        padding: 80px 0;
+    }
+    
+    .faq-wrapper {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    
+    .faq-collage {
+        order: -1;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    
+    .diamond-grid {
+        height: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    .faq-question {
+        padding: 18px 20px;
+    }
+    
+    .faq-question span {
+        font-size: 0.95rem;
+    }
+    
+    .faq-item.active .faq-answer {
+        padding: 0 20px 18px;
+    }
+    
+    .diamond-grid {
+        height: 350px;
+        gap: 10px;
+        padding: 15px;
+    }
+    
+    .collage-accent {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .faq-section {
+        padding: 60px 0;
+    }
+    
+    .faq-question {
+        padding: 15px;
+    }
+    
+    .faq-question span {
+        font-size: 0.9rem;
+    }
+    
+    .faq-answer p {
+        font-size: 0.9rem;
+    }
+    
+    .diamond-grid {
+        height: 280px;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+    }
+    
+    .diamond-3 {
+        display: none;
+    }
+    
+    .diamond-6 {
+        display: none;
+    }
+    
+    .diamond-1 {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+        clip-path: polygon(10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%, 0 10%);
+    }
+    
+    .diamond-2 {
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
+        clip-path: polygon(0 0, 90% 0, 100% 10%, 100% 100%, 10% 100%, 0 90%);
+    }
+    
+    .diamond-4 {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+    
+    .diamond-5 {
+        grid-column: 2 / 3;
+        grid-row: 2 / 4;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     }
 }
 

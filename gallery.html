@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore the visual gallery of Capitol Residency - featuring our luxurious rooms, fine dining, elegant events, and premium amenities.">
+    <title>Gallery | Capitol Residency - Luxury Hotel in Ranchi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Gallery Page Specific Styles */
+        .gallery-page {
+            min-height: 100vh;
+            background: var(--color-black);
+        }
+        
+        .gallery-hero {
+            position: relative;
+            height: 40vh;
+            min-height: 300px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+        
+        .gallery-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('images/bar-launge.jpg') center/cover no-repeat;
+            opacity: 0.2;
+        }
+        
+        .gallery-hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent 0%, var(--color-black) 100%);
+        }
+        
+        .gallery-hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 0 20px;
+        }
+        
+        .gallery-hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 500;
+            color: var(--color-white);
+            letter-spacing: 0.1em;
+            margin-bottom: 15px;
+        }
+        
+        .gallery-hero p {
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .gallery-hero .gold-accent {
+            color: var(--color-gold);
+        }
+        
+        /* Back Button */
+        .back-home {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(184, 163, 105, 0.3);
+            border-radius: 50px;
+            color: var(--color-white);
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .back-home:hover {
+            background: var(--color-gold);
+            border-color: var(--color-gold);
+            transform: translateX(-5px);
+        }
+        
+        .back-home svg {
+            width: 18px;
+            height: 18px;
+        }
+        
+        /* Gallery Content */
+        .gallery-content {
+            padding: 60px 40px 100px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+        
+        /* Gallery Filter */
+        .gallery-filter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 50px;
+        }
+        
+        .filter-btn {
+            padding: 12px 28px;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            color: rgba(255, 255, 255, 0.7);
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn:hover {
+            border-color: var(--color-gold);
+            color: var(--color-gold);
+        }
+        
+        .filter-btn.active {
+            background: var(--color-gold);
+            border-color: var(--color-gold);
+            color: var(--color-black);
+        }
+        
+        /* Masonry Gallery */
+        .gallery-masonry {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        
+        .gallery-card {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+        
+        .gallery-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-card:hover img {
+            transform: scale(1.08);
+        }
+        
+        .gallery-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+        
+        .gallery-card:hover::before {
+            opacity: 1;
+        }
+        
+        .gallery-card-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 2;
+        }
+        
+        .gallery-card:hover .gallery-card-info {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .gallery-card-info h3 {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--color-white);
+            letter-spacing: 0.05em;
+            margin-bottom: 5px;
+        }
+        
+        .gallery-card-info span {
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            color: var(--color-gold);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        /* Card Sizes */
+        .gallery-card.tall {
+            grid-row: span 2;
+        }
+        
+        .gallery-card.wide {
+            grid-column: span 2;
+        }
+        
+        .gallery-card.large {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+        
+        /* Standard height for cards */
+        .gallery-card {
+            min-height: 250px;
+        }
+        
+        .gallery-card.tall {
+            min-height: 520px;
+        }
+        
+        .gallery-card.wide {
+            min-height: 280px;
+        }
+        
+        .gallery-card.large {
+            min-height: 520px;
+        }
+        
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .lightbox.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .lightbox-content {
+            max-width: 90vw;
+            max-height: 90vh;
+            position: relative;
+        }
+        
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 85vh;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            background: transparent;
+            border: none;
+            color: var(--color-white);
+            font-size: 2rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .lightbox-close:hover {
+            color: var(--color-gold);
+        }
+        
+        .lightbox-caption {
+            text-align: center;
+            margin-top: 20px;
+            color: var(--color-white);
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            letter-spacing: 0.05em;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .gallery-masonry {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .gallery-card.large {
+                grid-column: span 2;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .gallery-content {
+                padding: 40px 20px 80px;
+            }
+            
+            .gallery-masonry {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .gallery-card,
+            .gallery-card.tall,
+            .gallery-card.wide,
+            .gallery-card.large {
+                grid-column: span 1;
+                grid-row: span 1;
+                min-height: 200px;
+            }
+            
+            .back-home {
+                top: 15px;
+                left: 15px;
+                padding: 10px 18px;
+                font-size: 0.8rem;
+            }
+            
+            .filter-btn {
+                padding: 10px 20px;
+                font-size: 0.85rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .gallery-hero {
+                height: 35vh;
+                min-height: 250px;
+            }
+            
+            .gallery-masonry {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-card {
+                min-height: 250px;
+            }
+        }
+    </style>
+</head>
+<body class="gallery-page">
+    <!-- Back to Home -->
+    <a href="index.html" class="back-home">
+        <svg viewBox="0 0 24 24" fill="none">
+            <path d="M19 12H5M12 19l-7-7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Back to Home
+    </a>
+
+    <!-- Gallery Hero -->
+    <section class="gallery-hero">
+        <div class="gallery-hero-content">
+            <h1>Our <span class="gold-accent">Gallery</span></h1>
+            <p>Explore the elegance and luxury of Capitol Residency through our curated collection of moments</p>
+        </div>
+    </section>
+
+    <!-- Gallery Content -->
+    <div class="gallery-content">
+        <!-- Filter Buttons -->
+        <div class="gallery-filter">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="events">Events</button>
+            <button class="filter-btn" data-filter="cuisine">Cuisine</button>
+            <button class="filter-btn" data-filter="bar">Bar & Lounge</button>
+            <button class="filter-btn" data-filter="rooms">Rooms</button>
+            <button class="filter-btn" data-filter="rooftop">Rooftop</button>
+        </div>
+
+        <!-- Gallery Grid -->
+        <div class="gallery-masonry" id="gallery-masonry">
+            <!-- Bar & Lounge -->
+            <div class="gallery-card large" data-category="bar">
+                <img src="images/bar-launge.jpg" alt="Luxury Bar & Lounge">
+                <div class="gallery-card-info">
+                    <h3>Luxury Bar & Lounge</h3>
+                    <span>Bar & Lounge</span>
+                </div>
+            </div>
+
+            <!-- Events - Anniversary -->
+            <div class="gallery-card" data-category="events">
+                <img src="images/aniversary.jpg" alt="Anniversary Celebration">
+                <div class="gallery-card-info">
+                    <h3>Anniversary Celebrations</h3>
+                    <span>Events</span>
+                </div>
+            </div>
+
+            <!-- Cuisine - Buffets -->
+            <div class="gallery-card" data-category="cuisine">
+                <img src="images/buffets.jpg" alt="Grand Buffet">
+                <div class="gallery-card-info">
+                    <h3>Grand Buffet</h3>
+                    <span>Cuisine</span>
+                </div>
+            </div>
+
+            <!-- Bar & Lounge 2 -->
+            <div class="gallery-card tall" data-category="bar">
+                <img src="images/bar-launge2.jpg" alt="Premium Bar">
+                <div class="gallery-card-info">
+                    <h3>Premium Bar</h3>
+                    <span>Bar & Lounge</span>
+                </div>
+            </div>
+
+            <!-- Events 2 -->
+            <div class="gallery-card" data-category="events">
+                <img src="images/events2.jpg" alt="Special Events">
+                <div class="gallery-card-info">
+                    <h3>Special Events</h3>
+                    <span>Events</span>
+                </div>
+            </div>
+
+            <!-- Cuisine 1 -->
+            <div class="gallery-card" data-category="cuisine">
+                <img src="images/cuisine1.jpg" alt="Gourmet Cuisine">
+                <div class="gallery-card-info">
+                    <h3>Gourmet Cuisine</h3>
+                    <span>Cuisine</span>
+                </div>
+            </div>
+
+            <!-- Bar & Lounge 3 -->
+            <div class="gallery-card wide" data-category="bar">
+                <img src="images/bar-launge3.jpg" alt="Elegant Lounge">
+                <div class="gallery-card-info">
+                    <h3>Elegant Lounge</h3>
+                    <span>Bar & Lounge</span>
+                </div>
+            </div>
+
+            <!-- Events 3 -->
+            <div class="gallery-card" data-category="events">
+                <img src="images/events3.jpg" alt="Corporate Events">
+                <div class="gallery-card-info">
+                    <h3>Corporate Events</h3>
+                    <span>Events</span>
+                </div>
+            </div>
+
+            <!-- Buffets 2 -->
+            <div class="gallery-card" data-category="cuisine">
+                <img src="images/buffets2.jpg" alt="Dining Experience">
+                <div class="gallery-card-info">
+                    <h3>Dining Experience</h3>
+                    <span>Cuisine</span>
+                </div>
+            </div>
+
+            <!-- Rooms - Lobby -->
+            <div class="gallery-card large" data-category="rooms">
+                <img src="images/lobby.jpg" alt="Grand Lobby">
+                <div class="gallery-card-info">
+                    <h3>Grand Lobby</h3>
+                    <span>Rooms</span>
+                </div>
+            </div>
+
+            <!-- Bar & Lounge 4 -->
+            <div class="gallery-card" data-category="bar">
+                <img src="images/bar-launge4.jpg" alt="Cocktail Bar">
+                <div class="gallery-card-info">
+                    <h3>Cocktail Bar</h3>
+                    <span>Bar & Lounge</span>
+                </div>
+            </div>
+
+            <!-- Events 4 -->
+            <div class="gallery-card" data-category="events">
+                <img src="images/events4.jpg" alt="Celebrations">
+                <div class="gallery-card-info">
+                    <h3>Grand Celebrations</h3>
+                    <span>Events</span>
+                </div>
+            </div>
+
+            <!-- Bar & Lounge 5 -->
+            <div class="gallery-card" data-category="bar">
+                <img src="images/bar-launge5.jpg" alt="Lounge Area">
+                <div class="gallery-card-info">
+                    <h3>Lounge Area</h3>
+                    <span>Bar & Lounge</span>
+                </div>
+            </div>
+
+            <!-- Rooms - Deluxe -->
+            <div class="gallery-card" data-category="rooms">
+                <img src="images/room_deluxe_1766573458003.png" alt="Deluxe Room">
+                <div class="gallery-card-info">
+                    <h3>Deluxe Room</h3>
+                    <span>Rooms</span>
+                </div>
+            </div>
+
+            <!-- Rooms - Premium -->
+            <div class="gallery-card" data-category="rooms">
+                <img src="images/room_premium_1766573478708.png" alt="Premium Room">
+                <div class="gallery-card-info">
+                    <h3>Premium Room</h3>
+                    <span>Rooms</span>
+                </div>
+            </div>
+
+            <!-- Rooftop Views -->
+            <div class="gallery-card wide" data-category="rooftop">
+                <img src="images/rooftop.jpg" alt="Rooftop Terrace">
+                <div class="gallery-card-info">
+                    <h3>Rooftop Terrace</h3>
+                    <span>Rooftop</span>
+                </div>
+            </div>
+
+            <!-- Rooms - Superior -->
+            <div class="gallery-card" data-category="rooms">
+                <img src="images/room_superior_1766573495955.png" alt="Superior Room">
+                <div class="gallery-card-info">
+                    <h3>Superior Room</h3>
+                    <span>Rooms</span>
+                </div>
+            </div>
+
+            <!-- Rooftop 2 -->
+            <div class="gallery-card" data-category="rooftop">
+                <img src="images/rooftop2.jpg" alt="Scenic Views">
+                <div class="gallery-card-info">
+                    <h3>Scenic Views</h3>
+                    <span>Rooftop</span>
+                </div>
+            </div>
+
+            <!-- Rooftop 3 -->
+            <div class="gallery-card tall" data-category="rooftop">
+                <img src="images/rooftop3.jpg" alt="Rooftop Ambiance">
+                <div class="gallery-card-info">
+                    <h3>Rooftop Ambiance</h3>
+                    <span>Rooftop</span>
+                </div>
+            </div>
+
+            <!-- Dining Gallery -->
+            <div class="gallery-card large" data-category="cuisine">
+                <img src="images/diningGallery.jpeg" alt="Fine Dining">
+                <div class="gallery-card-info">
+                    <h3>Fine Dining</h3>
+                    <span>Cuisine</span>
+                </div>
+            </div>
+
+            <!-- Dining Experience 2 -->
+            <div class="gallery-card" data-category="cuisine">
+                <img src="images/diningGallery2.jpg" alt="Restaurant Interior">
+                <div class="gallery-card-info">
+                    <h3>Restaurant Interior</h3>
+                    <span>Cuisine</span>
+                </div>
+            </div>
+
+            <!-- Premium Dining -->
+            <div class="gallery-card" data-category="cuisine">
+                <img src="images/diningGallery4.jpg" alt="Premium Dining">
+                <div class="gallery-card-info">
+                    <h3>Premium Dining</h3>
+                    <span>Cuisine</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" id="lightbox-close">&times;</button>
+            <img src="" alt="" id="lightbox-img">
+            <p class="lightbox-caption" id="lightbox-caption"></p>
+        </div>
+    </div>
+
+    <script>
+        // Gallery Filter
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryCards = document.querySelectorAll('.gallery-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.dataset.filter;
+
+                galleryCards.forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'scale(1)';
+                        }, 50);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'scale(0.8)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+
+        // Lightbox
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+        const lightboxClose = document.getElementById('lightbox-close');
+
+        galleryCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const img = card.querySelector('img');
+                const title = card.querySelector('h3').textContent;
+                
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt;
+                lightboxCaption.textContent = title;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    </script>
+</body>
+</html>
