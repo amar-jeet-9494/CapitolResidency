@@ -830,6 +830,81 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
-    // Initialize half-moon reviews carousel
-    halfmoonCarousel.init();
+    // Initialize half-moon reviews carousel (if present - for backwards compatibility)
+    if (document.getElementById('halfmoon-reviews')) {
+        halfmoonCarousel.init();
+    }
+
+    // ========================================
+    // HEADER REVIEWS TOGGLE PANEL
+    // ========================================
+    const headerReviewsToggle = {
+        toggle: document.getElementById('header-reviews-toggle'),
+        panel: document.getElementById('header-reviews-panel'),
+        isOpen: false,
+
+        init() {
+            if (!this.toggle || !this.panel) return;
+            
+            this.bindEvents();
+        },
+
+        bindEvents() {
+            // Toggle button click
+            this.toggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                this.togglePanel();
+            });
+
+            // Close on click outside
+            document.addEventListener('click', (e) => {
+                if (this.isOpen && 
+                    !this.panel.contains(e.target) && 
+                    !this.toggle.contains(e.target)) {
+                    this.closePanel();
+                }
+            });
+
+            // Close on escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && this.isOpen) {
+                    this.closePanel();
+                }
+            });
+
+            // Close on scroll (optional - for better UX)
+            let lastScrollY = window.scrollY;
+            window.addEventListener('scroll', () => {
+                const scrollDelta = Math.abs(window.scrollY - lastScrollY);
+                if (scrollDelta > 50 && this.isOpen) {
+                    this.closePanel();
+                }
+                lastScrollY = window.scrollY;
+            }, { passive: true });
+        },
+
+        togglePanel() {
+            if (this.isOpen) {
+                this.closePanel();
+            } else {
+                this.openPanel();
+            }
+        },
+
+        openPanel() {
+            this.isOpen = true;
+            this.toggle.classList.add('active');
+            this.panel.classList.add('active');
+        },
+
+        closePanel() {
+            this.isOpen = false;
+            this.toggle.classList.remove('active');
+            this.panel.classList.remove('active');
+        }
+    };
+
+    // Initialize header reviews toggle
+    headerReviewsToggle.init();
 });
