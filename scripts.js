@@ -147,22 +147,65 @@ document.addEventListener('DOMContentLoaded', function() {
     // ========================================
     const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
     const mainNav = document.getElementById('main-nav');
+    let isMobileMenuOpen = false;
 
-    if (mobileMenuToggle) {
-        mobileMenuToggle.addEventListener('click', function() {
-            this.classList.toggle('active');
-            mainNav.classList.toggle('mobile-open');
-            
-            // Animate hamburger to X
-            const lines = this.querySelectorAll('.hamburger-line');
-            if (this.classList.contains('active')) {
-                lines[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-                lines[1].style.opacity = '0';
-                lines[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
-            } else {
-                lines[0].style.transform = 'none';
-                lines[1].style.opacity = '1';
-                lines[2].style.transform = 'none';
+    function openMobileMenu() {
+        isMobileMenuOpen = true;
+        mobileMenuToggle.classList.add('active');
+        mainNav.classList.add('mobile-open');
+        document.body.style.overflow = 'hidden'; // Lock body scroll
+    }
+
+    function closeMobileMenu() {
+        isMobileMenuOpen = false;
+        mobileMenuToggle.classList.remove('active');
+        mainNav.classList.remove('mobile-open');
+        document.body.style.overflow = ''; // Restore body scroll
+    }
+
+    function toggleMobileMenu() {
+        if (isMobileMenuOpen) {
+            closeMobileMenu();
+        } else {
+            openMobileMenu();
+        }
+    }
+
+    if (mobileMenuToggle && mainNav) {
+        // Toggle button click
+        mobileMenuToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            toggleMobileMenu();
+        });
+
+        // Close menu when clicking on nav links
+        const navLinks = mainNav.querySelectorAll('.nav-link:not(.reviews-toggle)');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (isMobileMenuOpen) {
+                    closeMobileMenu();
+                }
+            });
+        });
+
+        // Close menu on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && isMobileMenuOpen) {
+                closeMobileMenu();
+            }
+        });
+
+        // Close menu on resize if screen becomes larger
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 992 && isMobileMenuOpen) {
+                closeMobileMenu();
+            }
+        });
+
+        // Close menu when clicking outside (on the overlay background)
+        mainNav.addEventListener('click', (e) => {
+            if (e.target === mainNav && isMobileMenuOpen) {
+                closeMobileMenu();
             }
         });
     }
