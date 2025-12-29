@@ -781,10 +781,19 @@ img {
 }
 
 /* Review Card */
-.review-card {
+/* .review-card {
     position: relative;
     padding: 24px 20px;
     background: linear-gradient(145deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    text-align: center;
+    overflow: hidden;
+} */
+.review-card {
+    position: relative;
+    padding: 24px 20px;
+    background: white;
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 16px;
     text-align: center;
@@ -908,7 +917,7 @@ img {
     font-family: var(--font-display);
     font-size: 0.9rem;
     font-weight: 600;
-    color: var(--color-white);
+    color: #ffd812;
     letter-spacing: 0.05em;
     margin-bottom: 4px;
 }
@@ -2969,7 +2978,7 @@ img {
    CONTACT SECTION
    ============================================ */
 .contact-section {
-    background: url('images/texture.jpg') center/cover no-repeat;
+    background: url('images/texture3.jpg') center/cover no-repeat;
     padding: 30px 0;
     position: relative;
 }
