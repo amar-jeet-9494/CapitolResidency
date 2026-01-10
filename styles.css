@@ -114,35 +114,15 @@ img {
     height: var(--header-height);
 }
 
-/* Desktop/Mobile Visibility Utilities */
-.desktop-only {
-    display: none;
-}
-
-.mobile-only {
-    display: block;
-}
-
-@media (min-width: 769px) {
-    .desktop-only {
-        display: flex;
-    }
-    
-    .mobile-only {
-        display: none !important;
-    }
-}
-
-/* Logo Styles - Centered on Desktop */
+/* Logo Styles */
 .logo {
     display: flex;
     align-items: center;
     text-decoration: none;
-    z-index: 10;
 }
 
 .logo-img {
-    height: 50px;
+    height: 40px;
     width: auto;
     transition: transform var(--transition-fast), filter var(--transition-fast), opacity 0.4s ease;
 }
@@ -152,30 +132,11 @@ img {
     filter: brightness(1.1);
 }
 
-/* Left and Right Navigation (Desktop) */
-.nav-left,
-.nav-right {
-    display: flex;
-    align-items: center;
-}
-
-.nav-left .nav-list,
-.nav-right .nav-list {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-/* Header CTA Button Container */
-.header-cta {
-    display: flex;
-    align-items: center;
-    margin-left: 15px;
-}
-
-/* Mobile Navigation Styles */
+/* Navigation Styles */
 .main-nav {
-    display: none;
+    flex: 1;
+    display: flex;
+    justify-content: center;
 }
 
 .nav-list {
