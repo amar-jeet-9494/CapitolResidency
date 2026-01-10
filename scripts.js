@@ -950,4 +950,147 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialize header reviews toggle
     headerReviewsToggle.init();
+
+    // ========================================
+    // MOBILE BOOKING POPUP
+    // ========================================
+    const mobileBookingPopup = {
+        overlay: document.getElementById('booking-popup-overlay'),
+        popup: document.getElementById('booking-popup'),
+        openBtn: document.getElementById('open-booking-popup'),
+        backBtn: document.getElementById('booking-popup-back'),
+        counterBtns: document.querySelectorAll('.counter-btn'),
+        datePickers: document.querySelectorAll('.booking-popup-date-picker'),
+        isOpen: false,
+
+        init() {
+            if (!this.overlay || !this.popup || !this.openBtn) return;
+            
+            this.bindEvents();
+            this.initDatePickers();
+        },
+
+        bindEvents() {
+            // Open popup
+            this.openBtn.addEventListener('click', () => {
+                this.openPopup();
+            });
+
+            // Close popup - back button
+            if (this.backBtn) {
+                this.backBtn.addEventListener('click', () => {
+                    this.closePopup();
+                });
+            }
+
+            // Close on overlay click (outside popup content)
+            this.overlay.addEventListener('click', (e) => {
+                if (e.target === this.overlay) {
+                    this.closePopup();
+                }
+            });
+
+            // Close on Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && this.isOpen) {
+                    this.closePopup();
+                }
+            });
+
+            // Counter buttons
+            this.counterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const targetId = btn.dataset.target;
+                    const valueEl = document.getElementById(targetId);
+                    if (!valueEl) return;
+
+                    let currentValue = parseInt(valueEl.textContent) || 1;
+                    const min = parseInt(btn.dataset.min) || 1;
+                    const max = parseInt(btn.dataset.max) || 10;
+
+                    if (btn.classList.contains('plus')) {
+                        if (currentValue < max) {
+                            valueEl.textContent = currentValue + 1;
+                        }
+                    } else if (btn.classList.contains('minus')) {
+                        if (currentValue > min) {
+                            valueEl.textContent = currentValue - 1;
+                        }
+                    }
+                });
+            });
+        },
+
+        openPopup() {
+            this.isOpen = true;
+            this.overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            // Trigger animation
+            requestAnimationFrame(() => {
+                this.popup.classList.add('active');
+            });
+        },
+
+        closePopup() {
+            this.isOpen = false;
+            this.popup.classList.remove('active');
+            this.overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        },
+
+        initDatePickers() {
+            this.datePickers.forEach(picker => {
+                const inputId = picker.dataset.popupInput;
+                const dateText = picker.querySelector('.popup-date-text');
+                
+                if (!dateText) return;
+
+                // Create a simple date picker click handler
+                picker.addEventListener('click', () => {
+                    // Use native date picker on mobile for better UX
+                    const dateInput = document.createElement('input');
+                    dateInput.type = 'date';
+                    dateInput.style.position = 'absolute';
+                    dateInput.style.opacity = '0';
+                    dateInput.style.width = '0';
+                    dateInput.style.height = '0';
+                    
+                    // Set minimum date to today
+                    const today = new Date().toISOString().split('T')[0];
+                    dateInput.min = today;
+                    
+                    document.body.appendChild(dateInput);
+                    
+                    dateInput.addEventListener('change', (e) => {
+                        const selectedDate = new Date(e.target.value + 'T00:00:00');
+                        const options = { day: 'numeric', month: 'short', year: 'numeric' };
+                        dateText.textContent = selectedDate.toLocaleDateString('en-US', options);
+                        dateText.classList.add('has-date');
+                        
+                        // Update hidden input
+                        const hiddenInput = document.getElementById(inputId);
+                        if (hiddenInput) {
+                            hiddenInput.value = e.target.value;
+                        }
+                        
+                        document.body.removeChild(dateInput);
+                    });
+                    
+                    dateInput.addEventListener('blur', () => {
+                        setTimeout(() => {
+                            if (document.body.contains(dateInput)) {
+                                document.body.removeChild(dateInput);
+                            }
+                        }, 100);
+                    });
+                    
+                    dateInput.focus();
+                    dateInput.click();
+                });
+            });
+        }
+    };
+
+    // Initialize mobile booking popup
+    mobileBookingPopup.init();
 });

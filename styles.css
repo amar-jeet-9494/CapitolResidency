@@ -97,10 +97,11 @@ img {
     left: 0;
     right: 0;
     z-index: 1000;
-    background: var(--header-bg);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-bottom: none;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .header-container {
@@ -123,7 +124,7 @@ img {
 .logo-img {
     height: 40px;
     width: auto;
-    transition: transform var(--transition-fast), filter var(--transition-fast);
+    transition: transform var(--transition-fast), filter var(--transition-fast), opacity 0.4s ease;
 }
 
 .logo:hover .logo-img {
@@ -156,12 +157,13 @@ img {
     font-size: 0.8rem;
     font-weight: 500;
     letter-spacing: 0.1em;
-    color: var(--color-gray-light);
-    transition: color var(--transition-fast);
+    color: var(--color-white);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .nav-link:hover {
-    color: var(--color-white);
+    color: var(--color-gold-light);
 }
 
 .dropdown-icon {
@@ -202,13 +204,14 @@ img {
     font-weight: 600;
     letter-spacing: 0.1em;
     border-radius: 0;
-    transition: all var(--transition-fast);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .cta-button:hover {
     background: var(--color-gold-light);
     transform: translateY(-1px);
-    box-shadow: 0 4px 20px rgba(184, 163, 105, 0.3);
+    box-shadow: 0 4px 20px rgba(184, 163, 105, 0.4);
 }
 
 /* Mobile Menu Toggle */
@@ -272,6 +275,70 @@ img {
     height: 100%;
     object-fit: cover;
     object-position: center;
+}
+
+/* ============================================
+   HERO VIDEO BACKGROUND
+   ============================================ */
+.hero-video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: cover;
+    z-index: 1;
+}
+
+/* Desktop video visible by default, hidden on mobile */
+.hero-video-desktop {
+    display: block;
+}
+
+/* Mobile video hidden by default, shown on mobile */
+.hero-video-mobile {
+    display: none;
+}
+
+/* Elegant luxury overlay for text legibility */
+.hero-video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.3) 0%,
+        rgba(0, 0, 0, 0.1) 40%,
+        rgba(0, 0, 0, 0.1) 60%,
+        rgba(0, 0, 0, 0.4) 100%
+    );
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Responsive: Switch to mobile video on smaller screens */
+@media (max-width: 768px) {
+    .hero-video-desktop {
+        display: none;
+    }
+    
+    .hero-video-mobile {
+        display: block;
+    }
 }
 
 .slide-overlay {
@@ -861,10 +928,112 @@ img {
     animation: shimmer 2s linear infinite;
 }
 
-/* Header scroll effect */
+/* Header scroll effect - Desktop: White luxury on scroll */
 .header.scrolled {
-    background: rgba(13, 13, 13, 0.98);
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(184, 163, 105, 0.15);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08),
+                0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* Desktop header scrolled text colors */
+.header.scrolled .nav-link {
+    color: #333;
+    text-shadow: none;
+}
+
+.header.scrolled .nav-link:hover {
+    color: var(--color-gold);
+}
+
+.header.scrolled .dropdown-icon {
+    color: #666;
+}
+
+.header.scrolled .nav-link:hover .dropdown-icon {
+    color: var(--color-gold);
+}
+
+/* Reviews star icon on scrolled header */
+.header.scrolled .reviews-star-icon {
+    color: var(--color-gold);
+}
+
+/* CTA button on scrolled header - maintain gold but adjust for white bg */
+.header.scrolled .cta-button {
+    background: linear-gradient(135deg, #b8a369 0%, #b8a369 100%);
+    color: var(--color-white);
+    box-shadow: 0 4px 15px rgba(193, 127, 89, 0.3);
+}
+
+.header.scrolled .cta-button:hover {
+    background: linear-gradient(135deg, #b8a369 0%, #b8a369 100%);
+    box-shadow: 0 6px 20px rgba(193, 127, 89, 0.4);
+}
+
+/* ============================================
+   MOBILE TRANSPARENT HEADER - LUXURY SCROLL EFFECT
+   ============================================ */
+@media (max-width: 768px) {
+    /* Mobile: Transparent header by default */
+    .header {
+        background: transparent;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        border-bottom: none;
+    }
+    
+    /* Hamburger lines - white on transparent header */
+    .hamburger-line {
+        background: var(--color-white);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    /* Login link - white on transparent header */
+    .mobile-login-link {
+        color: var(--color-white);
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    /* Logo brightness for visibility on transparent bg */
+    .header:not(.scrolled) .logo-img {
+        filter: brightness(1.1) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    }
+    
+    /* Mobile: White luxury header on scroll */
+    .header.scrolled {
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(184, 163, 105, 0.15);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08),
+                    0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+    
+    /* Hamburger lines - gold/dark on white header */
+    .header.scrolled .hamburger-line {
+        background: var(--color-gold);
+        box-shadow: none;
+    }
+    
+    /* Login link - elegant dark color on white header */
+    .header.scrolled .mobile-login-link {
+        color: #333;
+        text-shadow: none;
+    }
+    
+    .header.scrolled .mobile-login-link:hover {
+        color: var(--color-gold);
+    }
+    
+    /* Logo adjustments for white background */
+    .header.scrolled .logo-img {
+        filter: none;
+    }
 }
 
 /* Smooth image zoom effect on slides */
@@ -1813,7 +1982,7 @@ img {
 .rooms-section {
     background: var(--color-white);
     padding: 60px 0 50px;
-    padding-top: 0;
+    padding-top: 30;
 }
 
 /* Section Header */
@@ -4223,23 +4392,30 @@ img {
     }
 }
 
-/* Reviews Dropdown Panel */
+/* Reviews Dropdown Panel - Premium Glassmorphism */
 .header-reviews-panel {
     position: fixed;
     top: var(--header-height);
     left: 0;
     right: 0;
-    background: linear-gradient(180deg, rgba(13, 13, 13, 0.98) 0%, rgba(20, 20, 20, 0.98) 100%);
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
-    border-bottom: 1px solid rgba(184, 163, 105, 0.2);
+    /* Elegant frosted glass effect */
+    background: linear-gradient(180deg, 
+        rgba(255, 255, 255, 0.92) 0%, 
+        rgba(250, 248, 245, 0.95) 50%,
+        rgba(255, 255, 255, 0.90) 100%);
+    backdrop-filter: blur(30px) saturate(180%);
+    -webkit-backdrop-filter: blur(30px) saturate(180%);
+    border-bottom: 1px solid rgba(184, 163, 105, 0.25);
     z-index: 999;
     max-height: 0;
     overflow: hidden;
     opacity: 0;
     transform: translateY(-10px);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.08),
+        0 20px 60px rgba(0, 0, 0, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 .header-reviews-panel.active {
@@ -4263,7 +4439,7 @@ img {
     font-family: var(--font-display);
     font-size: 1.4rem;
     font-weight: 600;
-    color: var(--color-gold);
+    color: #8B7355; /* Rich warm brown for elegance on light bg */
     letter-spacing: 0.1em;
     margin-bottom: 5px;
 }
@@ -4271,7 +4447,7 @@ img {
 .reviews-panel-subtitle {
     font-family: var(--font-body);
     font-size: 0.85rem;
-    color: var(--color-gray-light);
+    color: rgba(90, 80, 70, 0.7);
     letter-spacing: 0.05em;
 }
 
@@ -4283,23 +4459,30 @@ img {
     flex-wrap: wrap;
 }
 
-/* Individual Review Card */
+/* Individual Review Card - Glass Cards */
 .header-review-card {
     position: relative;
     flex: 0 1 200px;
     padding: 20px 15px;
-    background: linear-gradient(145deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: linear-gradient(145deg, 
+        rgba(255, 255, 255, 0.85) 0%, 
+        rgba(255, 255, 255, 0.6) 100%);
+    border: 1px solid rgba(184, 163, 105, 0.2);
     border-radius: 16px;
     text-align: center;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     overflow: hidden;
+    box-shadow: 
+        0 4px 15px rgba(0, 0, 0, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
 .header-review-card:hover {
-    transform: translateY(-5px);
-    border-color: rgba(184, 163, 105, 0.3);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transform: translateY(-5px) scale(1.02);
+    border-color: rgba(184, 163, 105, 0.4);
+    box-shadow: 
+        0 15px 35px rgba(139, 115, 85, 0.12),
+        0 5px 15px rgba(0, 0, 0, 0.06);
 }
 
 /* Review Glow Effects */
@@ -4351,9 +4534,10 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(184, 163, 105, 0.15);
     transition: transform 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .header-review-badge svg {
@@ -4385,7 +4569,7 @@ img {
     font-family: var(--font-display);
     font-size: 1.4rem;
     font-weight: 700;
-    color: var(--color-gold);
+    color: #8B7355; /* Rich brown for ratings on light bg */
     letter-spacing: 0.02em;
     margin-bottom: 2px;
 }
@@ -4396,7 +4580,7 @@ img {
     font-family: var(--font-display);
     font-size: 0.8rem;
     font-weight: 600;
-    color: #ffd812;
+    color: #6B5A45; /* Darker warm brown */
     letter-spacing: 0.05em;
     margin-bottom: 2px;
 }
@@ -4406,7 +4590,7 @@ img {
     display: block;
     font-family: var(--font-body);
     font-size: 0.7rem;
-    color: var(--color-gray-light);
+    color: rgba(90, 80, 70, 0.6);
     letter-spacing: 0.03em;
 }
 
@@ -4466,5 +4650,374 @@ img {
     .header-review-stars svg {
         width: 12px;
         height: 12px;
+    }
+}
+
+/* ============================================
+   MOBILE STICKY BOOK BUTTON & LOGIN LINK
+   ============================================ */
+
+/* Mobile Login Link - Hidden by default on desktop */
+.mobile-login-link {
+    display: none;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-gray-light);
+    cursor: pointer;
+    transition: color var(--transition-fast);
+    letter-spacing: 0.05em;
+}
+
+.mobile-login-link:hover {
+    color: var(--color-gold);
+}
+
+/* Mobile Sticky Book Button - Hidden by default on desktop */
+.mobile-sticky-book {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    padding: 0;
+    background: var(--color-white);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-sticky-book-btn {
+    display: block;
+    width: 100%;
+    padding: 18px 20px;
+    background: linear-gradient(135deg, #b8a369 0%, #b8a369 100%);
+    color: var(--color-white);
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.mobile-sticky-book-btn:hover,
+.mobile-sticky-book-btn:active {
+    background: linear-gradient(135deg, #b8a369 0%, #b8a369 100%);
+}
+
+/* Mobile: Show login link and sticky book button, hide CTA button */
+@media (max-width: 768px) {
+    .mobile-login-link {
+        display: block;
+    }
+    
+    .header-right .cta-button {
+        display: none;
+    }
+    
+    .mobile-sticky-book {
+        display: block;
+    }
+    
+    /* Add padding to body to account for sticky button */
+    body {
+        padding-bottom: 60px;
+    }
+}
+
+/* ============================================
+   MOBILE BOOKING POPUP
+   ============================================ */
+
+.booking-popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--color-white);
+    z-index: 10000;
+    overflow-y: auto;
+}
+
+.booking-popup-overlay.active {
+    display: block;
+}
+
+.booking-popup {
+    min-height: 100vh;
+    padding: 0;
+    background: var(--color-white);
+}
+
+/* Popup Header */
+.booking-popup-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.booking-popup-back {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #333;
+    padding: 0;
+}
+
+.booking-popup-back svg {
+    width: 24px;
+    height: 24px;
+}
+
+.booking-popup-title {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: #333;
+    letter-spacing: 0.02em;
+}
+
+/* Popup Content */
+.booking-popup-content {
+    padding: 25px 20px;
+}
+
+/* Country Select Field */
+.booking-popup-field {
+    margin-bottom: 25px;
+}
+
+.booking-popup-select {
+    width: 100%;
+    padding: 15px 20px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: #333;
+    background: var(--color-white);
+    border: none;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M3 5L6 8L9 5' fill='none' stroke='%23999' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+}
+
+.booking-popup-select:focus {
+    outline: none;
+    border-bottom-color: #C17F59;
+}
+
+/* Date Grid */
+.booking-popup-date-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 1px solid #C17F59;
+    margin-bottom: 0;
+}
+
+.booking-popup-date-field {
+    padding: 15px 20px;
+    border-right: 1px solid #C17F59;
+}
+
+.booking-popup-date-field:last-child {
+    border-right: none;
+}
+
+.booking-popup-date-field label {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #333;
+    letter-spacing: 0.05em;
+    margin-bottom: 5px;
+}
+
+.booking-popup-date-picker {
+    cursor: pointer;
+}
+
+.popup-date-text {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: #999;
+}
+
+.popup-date-text.has-date {
+    color: #333;
+}
+
+/* Room & Guests Grid */
+.booking-popup-guests-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 1px solid #C17F59;
+    border-top: none;
+    margin-bottom: 30px;
+}
+
+.booking-popup-counter {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 18px 20px;
+    border-right: 1px solid #C17F59;
+    position: relative;
+}
+
+.booking-popup-counter:last-child {
+    border-right: none;
+}
+
+.counter-value {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #333;
+    margin-right: 10px;
+}
+
+.counter-label {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: #666;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.counter-controls {
+    display: flex;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    gap: 0;
+}
+
+.counter-btn {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 1px solid #ddd;
+    color: #666;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.counter-btn:hover {
+    background: #f5f5f5;
+    border-color: #C17F59;
+    color: #C17F59;
+}
+
+.counter-btn.minus {
+    border-radius: 4px 0 0 4px;
+}
+
+.counter-btn.plus {
+    border-radius: 0 4px 4px 0;
+    border-left: none;
+}
+
+/* Promo Code Section */
+.booking-popup-promo {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    border-top: 1px solid #C17F59;
+    padding-top: 20px;
+}
+
+.promo-input {
+    flex: 1;
+    padding: 12px 15px;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #333;
+    letter-spacing: 0.1em;
+    border: none;
+    background: transparent;
+}
+
+.promo-input::placeholder {
+    color: #C17F59;
+}
+
+.promo-input:focus {
+    outline: none;
+}
+
+.promo-apply-btn {
+    padding: 12px 20px;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #333;
+    letter-spacing: 0.1em;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.promo-apply-btn:hover {
+    color: #C17F59;
+}
+
+.promo-book-btn {
+    padding: 12px 30px;
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-white);
+    letter-spacing: 0.1em;
+    background: linear-gradient(135deg, #C17F59 0%, #B8763F 100%);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.promo-book-btn:hover {
+    background: linear-gradient(135deg, #A86D4A 0%, #9A6235 100%);
+}
+
+/* Desktop - Hide mobile booking popup elements */
+@media (min-width: 769px) {
+    .booking-popup-overlay {
+        display: none !important;
+    }
+    
+    .mobile-sticky-book {
+        display: none !important;
+    }
+    
+    .mobile-login-link {
+        display: none !important;
     }
 }
