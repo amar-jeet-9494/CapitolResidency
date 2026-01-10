@@ -930,7 +930,7 @@ img {
 
 /* Header scroll effect - Desktop: White luxury on scroll */
 .header.scrolled {
-    background: rgba(255, 255, 255, 0.98);
+    background: #b8a369;
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(184, 163, 105, 0.15);
@@ -940,7 +940,7 @@ img {
 
 /* Desktop header scrolled text colors */
 .header.scrolled .nav-link {
-    color: #333;
+    color: #ffffff;
     text-shadow: none;
 }
 
@@ -963,7 +963,7 @@ img {
 
 /* CTA button on scrolled header - maintain gold but adjust for white bg */
 .header.scrolled .cta-button {
-    background: linear-gradient(135deg, #b8a369 0%, #b8a369 100%);
+    background: linear-gradient(135deg, #1b1b1b 0%, #1b1b1b 100%);
     color: var(--color-white);
     box-shadow: 0 4px 15px rgba(193, 127, 89, 0.3);
 }
@@ -1006,7 +1006,7 @@ img {
     
     /* Mobile: White luxury header on scroll */
     .header.scrolled {
-        background: rgba(255, 255, 255, 0.98);
+        background: #b8a369;
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
         border-bottom: 1px solid rgba(184, 163, 105, 0.15);
@@ -1016,7 +1016,7 @@ img {
     
     /* Hamburger lines - gold/dark on white header */
     .header.scrolled .hamburger-line {
-        background: var(--color-gold);
+        background: var(--color-black);
         box-shadow: none;
     }
     
@@ -4676,10 +4676,11 @@ img {
 /* Mobile Sticky Book Button - Hidden by default on desktop */
 .mobile-sticky-book {
     display: none;
+    width: 90%;
     position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    bottom: 20px;
+    left: 5%;
+    right: 5%;
     z-index: 999;
     padding: 0;
     background: var(--color-white);
@@ -4996,7 +4997,7 @@ img {
     font-weight: 600;
     color: var(--color-white);
     letter-spacing: 0.1em;
-    background: linear-gradient(135deg, #C17F59 0%, #B8763F 100%);
+    background: linear-gradient(135deg, #b8a369 0%, #b8a369 100%);
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -5021,3 +5022,449 @@ img {
         display: none !important;
     }
 }
+
+/* ==========================================
+   PREMIUM TABBED AMENITIES SECTION
+   ========================================== */
+.tabbed-amenities-section {
+    background: linear-gradient(180deg, #FDFCFA 0%, #F8F6F2 50%, #FDFCFA 100%);
+    padding: 80px 0 100px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle pattern overlay */
+.tabbed-amenities-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: radial-gradient(circle at 20% 50%, rgba(184, 163, 105, 0.03) 0%, transparent 50%),
+                      radial-gradient(circle at 80% 80%, rgba(184, 163, 105, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.tabbed-amenities-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Amenity Tabs Wrapper */
+.amenity-tabs-wrapper {
+    margin: 50px 0 40px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.amenity-tabs-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.amenity-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 0;
+}
+
+/* Individual Tab Button */
+.amenity-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 20px 28px;
+    min-width: 140px;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(184, 163, 105, 0.15);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.amenity-tab::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-gold), #D4C89A);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.amenity-tab:hover {
+    background: rgba(255, 255, 255, 1);
+    border-color: rgba(184, 163, 105, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(139, 115, 85, 0.12);
+}
+
+.amenity-tab:hover::before {
+    transform: scaleX(0.6);
+}
+
+.amenity-tab.active {
+    background: linear-gradient(145deg, #B8A369 0%, #9A8A57 100%);
+    border-color: transparent;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(184, 163, 105, 0.25);
+}
+
+.amenity-tab.active::before {
+    transform: scaleX(1);
+    background: rgba(255, 255, 255, 0.4);
+}
+
+/* Tab Icon */
+.tab-icon-wrapper {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(184, 163, 105, 0.1);
+    transition: all 0.3s ease;
+}
+
+.amenity-tab:hover .tab-icon-wrapper {
+    background: rgba(184, 163, 105, 0.15);
+    transform: scale(1.05);
+}
+
+.amenity-tab.active .tab-icon-wrapper {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.tab-icon-wrapper svg {
+    width: 28px;
+    height: 28px;
+    color: var(--color-gold);
+    transition: all 0.3s ease;
+}
+
+.amenity-tab.active .tab-icon-wrapper svg {
+    color: #FFFFFF;
+}
+
+/* Tab Label */
+.tab-label {
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    color: #6B5A45;
+    text-align: center;
+    transition: color 0.3s ease;
+}
+
+.amenity-tab.active .tab-label {
+    color: #FFFFFF;
+    font-weight: 600;
+}
+
+/* Content Wrapper */
+.amenity-content-wrapper {
+    margin-top: 20px;
+    position: relative;
+}
+
+/* Individual Content Panel */
+.amenity-content {
+    display: none;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+}
+
+.amenity-content.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    animation: fadeInUp 0.5s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Content Inner Layout */
+.amenity-content-inner {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 50px;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 40px;
+    border: 1px solid rgba(184, 163, 105, 0.1);
+    box-shadow: 
+        0 10px 40px rgba(0, 0, 0, 0.05),
+        0 1px 0 rgba(255, 255, 255, 0.8) inset;
+}
+
+/* Amenity Image */
+.amenity-image {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+}
+
+.amenity-image img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.amenity-content-inner:hover .amenity-image img {
+    transform: scale(1.05);
+}
+
+.amenity-image .image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 60%, rgba(0, 0, 0, 0.3) 100%);
+    pointer-events: none;
+}
+
+/* Amenity Details */
+.amenity-details {
+    padding: 20px 10px;
+}
+
+.amenity-content-title {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 600;
+    color: #3D3425;
+    letter-spacing: 0.02em;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.amenity-content-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-gold), transparent);
+    border-radius: 3px;
+}
+
+.amenity-content-description {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #5A5044;
+    margin-bottom: 15px;
+}
+
+.amenity-content-description strong {
+    color: #3D3425;
+    font-weight: 600;
+}
+
+/* Amenity Features List */
+.amenity-features {
+    list-style: none;
+    margin: 25px 0;
+    padding: 0;
+}
+
+.amenity-features li {
+    position: relative;
+    padding: 8px 0 8px 28px;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: #5A5044;
+}
+
+.amenity-features li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    background: var(--color-gold);
+    border-radius: 50%;
+}
+
+/* CTA Button */
+.amenity-cta-btn {
+    display: inline-block;
+    padding: 14px 32px;
+    margin-top: 15px;
+    background: linear-gradient(135deg, #B8A369 0%, #9A8A57 100%);
+    color: #FFFFFF;
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(184, 163, 105, 0.3);
+}
+
+.amenity-cta-btn:hover {
+    background: linear-gradient(135deg, #9A8A57 0%, #8B7B48 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(184, 163, 105, 0.4);
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+    .amenity-tabs {
+        gap: 6px;
+    }
+    
+    .amenity-tab {
+        min-width: 120px;
+        padding: 16px 20px;
+    }
+    
+    .amenity-content-inner {
+        gap: 35px;
+        padding: 30px;
+    }
+}
+
+@media (max-width: 992px) {
+    .amenity-tabs {
+        justify-content: flex-start;
+        padding: 10px 20px;
+    }
+    
+    .amenity-content-inner {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .amenity-image img {
+        height: 300px;
+    }
+    
+    .amenity-content-title {
+        font-size: 1.7rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .tabbed-amenities-section {
+        padding: 60px 0 70px;
+    }
+    
+    .tabbed-amenities-container {
+        padding: 0 20px;
+    }
+    
+    .amenity-tabs-wrapper {
+        margin: 35px -20px 30px;
+        padding: 0 20px;
+    }
+    
+    .amenity-tabs {
+        gap: 8px;
+    }
+    
+    .amenity-tab {
+        min-width: 110px;
+        padding: 14px 16px;
+    }
+    
+    .tab-icon-wrapper {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .tab-icon-wrapper svg {
+        width: 22px;
+        height: 22px;
+    }
+    
+    .tab-label {
+        font-size: 0.75rem;
+    }
+    
+    .amenity-content-inner {
+        padding: 25px;
+        border-radius: 16px;
+    }
+    
+    .amenity-image img {
+        height: 250px;
+    }
+    
+    .amenity-content-title {
+        font-size: 1.5rem;
+    }
+    
+    .amenity-content-description {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .amenity-tab {
+        min-width: 95px;
+        padding: 12px 12px;
+        gap: 8px;
+    }
+    
+    .tab-icon-wrapper {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .tab-icon-wrapper svg {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .tab-label {
+        font-size: 0.7rem;
+    }
+    
+    .amenity-content-inner {
+        padding: 20px;
+    }
+    
+    .amenity-image img {
+        height: 200px;
+    }
+    
+    .amenity-content-title {
+        font-size: 1.3rem;
+    }
+    
+    .amenity-cta-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+

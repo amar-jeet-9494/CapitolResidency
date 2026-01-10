@@ -30,7 +30,7 @@
             
             <div class="booking-popup-content">
                 <!-- Country Selection -->
-                <div class="booking-popup-field">
+                <!-- <div class="booking-popup-field">
                     <select class="booking-popup-select" id="popup-country">
                         <option value="india" selected>India</option>
                         <option value="usa">USA</option>
@@ -38,7 +38,7 @@
                         <option value="uae">UAE</option>
                         <option value="other">Other</option>
                     </select>
-                </div>
+                </div> -->
                 
                 <!-- Date Grid -->
                 <div class="booking-popup-date-grid">
@@ -80,8 +80,8 @@
                 
                 <!-- Promo Code -->
                 <div class="booking-popup-promo">
-                    <input type="text" class="promo-input" id="popup-promo" placeholder="PROMO CODE">
-                    <button class="promo-apply-btn">APPLY</button>
+                    <!-- <input type="text" class="promo-input" id="popup-promo" placeholder="PROMO CODE"> -->
+                    <!-- <button class="promo-apply-btn">APPLY</button> -->
                     <button class="promo-book-btn">BOOK</button>
                 </div>
             </div>
@@ -967,7 +967,7 @@
     </section>
 
     <!-- Amenities Section -->
-    <section class="amenities-section" id="amenities">
+    <!-- <section class="amenities-section" id="amenities">
         <div class="section-header">
             <p class="section-subtitle">Premium Comforts</p>
             <h2 class="section-title">Hotel Amenities</h2>
@@ -978,7 +978,7 @@
         </div>
 
         <div class="amenities-grid">
-            <!-- King Sized Beds -->
+           
             <div class="amenity-card">
                 <div class="amenity-icon">
                     <svg viewBox="0 0 64 64" fill="none">
@@ -993,7 +993,7 @@
                 <h3 class="amenity-title">King Sized Beds</h3>
             </div>
 
-            <!-- WiFi -->
+            
             <div class="amenity-card">
                 <div class="amenity-icon">
                     <svg viewBox="0 0 64 64" fill="none">
@@ -1006,7 +1006,7 @@
                 <h3 class="amenity-title">High-Speed WiFi</h3>
             </div>
 
-            <!-- Television -->
+           
             <div class="amenity-card">
                 <div class="amenity-icon">
                     <svg viewBox="0 0 64 64" fill="none">
@@ -1020,7 +1020,7 @@
                 <h3 class="amenity-title">Smart Television</h3>
             </div>
 
-            <!-- Climate Control -->
+            
             <div class="amenity-card">
                 <div class="amenity-icon">
                     <svg viewBox="0 0 64 64" fill="none">
@@ -1033,7 +1033,7 @@
                 <h3 class="amenity-title">Climate Control</h3>
             </div>
 
-            <!-- Mini Bar -->
+            
             <div class="amenity-card">
                 <div class="amenity-icon">
                     <svg viewBox="0 0 64 64" fill="none">
@@ -1048,7 +1048,7 @@
                 <h3 class="amenity-title">Mini Refrigerator</h3>
             </div>
 
-            <!-- Toiletries -->
+            
             <div class="amenity-card">
                 <div class="amenity-icon">
                     <svg viewBox="0 0 64 64" fill="none">
@@ -1061,7 +1061,7 @@
                 <h3 class="amenity-title">Luxury Toiletries</h3>
             </div>
 
-            <!-- Telephone -->
+            
             <div class="amenity-card">
                 <div class="amenity-icon">
                     <svg viewBox="0 0 64 64" fill="none">
@@ -1076,7 +1076,7 @@
                 <h3 class="amenity-title">Direct Dial Phone</h3>
             </div>
 
-            <!-- Room Service -->
+            
             <div class="amenity-card">
                 <div class="amenity-icon">
                     <svg viewBox="0 0 64 64" fill="none">
@@ -1089,7 +1089,7 @@
                 <h3 class="amenity-title">24/7 Room Service</h3>
             </div>
 
-            <!-- Laundry -->
+           
             <div class="amenity-card">
                 <div class="amenity-icon">
                     <svg viewBox="0 0 64 64" fill="none">
@@ -1103,7 +1103,7 @@
                 <h3 class="amenity-title">Laundry Service</h3>
             </div>
 
-            <!-- Safe -->
+            
             <div class="amenity-card">
                 <div class="amenity-icon">
                     <svg viewBox="0 0 64 64" fill="none">
@@ -1115,6 +1115,275 @@
                     </svg>
                 </div>
                 <h3 class="amenity-title">In-Room Safe</h3>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Premium Tabbed Amenities Section -->
+    <section class="tabbed-amenities-section" id="premium-amenities">
+        <div class="tabbed-amenities-container">
+            <!-- Section Header -->
+            <div class="section-header">
+                <p class="section-subtitle">Experience Excellence</p>
+                <h2 class="section-title">Premium Facilities</h2>
+                <div class="title-underline"></div>
+            </div>
+
+            <!-- Amenity Tabs -->
+            <div class="amenity-tabs-wrapper">
+                <div class="amenity-tabs" id="amenity-tabs">
+                    <!-- Fine Dining -->
+                    <button class="amenity-tab active" data-tab="dining">
+                        <div class="tab-icon-wrapper">
+                            <svg viewBox="0 0 64 64" fill="none">
+                                <path d="M16 8v20c0 4.4 3.6 8 8 8h4v20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M24 8v20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M32 8v12c0 2.2 1.8 4 4 4h8a4 4 0 0 0 4-4V8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M40 8v48" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <span class="tab-label">Fine Dining</span>
+                    </button>
+
+                    <!-- Spa & Wellness -->
+                    <button class="amenity-tab" data-tab="spa">
+                        <div class="tab-icon-wrapper">
+                            <svg viewBox="0 0 64 64" fill="none">
+                                <path d="M32 56c-8-8-20-12-20-28 0-12 8-20 20-20s20 8 20 20c0 16-12 20-20 28z" stroke="currentColor" stroke-width="2"/>
+                                <path d="M32 20c-4 8-8 16-8 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                <circle cx="28" cy="32" r="3" stroke="currentColor" stroke-width="1.5"/>
+                                <circle cx="38" cy="28" r="2" stroke="currentColor" stroke-width="1.5"/>
+                            </svg>
+                        </div>
+                        <span class="tab-label">Spa & Wellness</span>
+                    </button>
+
+                    <!-- Fitness Center -->
+                    <button class="amenity-tab" data-tab="fitness">
+                        <div class="tab-icon-wrapper">
+                            <svg viewBox="0 0 64 64" fill="none">
+                                <path d="M8 32h48" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M12 24v16M20 20v24M44 20v24M52 24v16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <rect x="16" y="28" width="8" height="8" rx="1" stroke="currentColor" stroke-width="2"/>
+                                <rect x="40" y="28" width="8" height="8" rx="1" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <span class="tab-label">Fitness Center</span>
+                    </button>
+
+                    <!-- Conference Hall -->
+                    <button class="amenity-tab" data-tab="conference">
+                        <div class="tab-icon-wrapper">
+                            <svg viewBox="0 0 64 64" fill="none">
+                                <rect x="8" y="16" width="48" height="32" rx="3" stroke="currentColor" stroke-width="2"/>
+                                <path d="M8 24h48" stroke="currentColor" stroke-width="2"/>
+                                <rect x="20" y="30" width="24" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                                <circle cx="16" cy="20" r="2" fill="currentColor"/>
+                                <circle cx="24" cy="20" r="2" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <span class="tab-label">Conference Hall</span>
+                    </button>
+
+                    <!-- Bar & Lounge -->
+                    <button class="amenity-tab" data-tab="bar">
+                        <div class="tab-icon-wrapper">
+                            <svg viewBox="0 0 64 64" fill="none">
+                                <path d="M16 8l16 24 16-24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M16 8h32" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M32 32v20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M22 56h20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <ellipse cx="32" cy="18" rx="10" ry="4" stroke="currentColor" stroke-width="1.5"/>
+                            </svg>
+                        </div>
+                        <span class="tab-label">Bar & Lounge</span>
+                    </button>
+
+                    <!-- Room Service -->
+                    <button class="amenity-tab" data-tab="roomservice">
+                        <div class="tab-icon-wrapper">
+                            <svg viewBox="0 0 64 64" fill="none">
+                                <ellipse cx="32" cy="48" rx="20" ry="4" stroke="currentColor" stroke-width="2"/>
+                                <path d="M12 48c0-16 8-28 20-28s20 12 20 28" stroke="currentColor" stroke-width="2"/>
+                                <path d="M32 20V8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <circle cx="32" cy="8" r="3" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <span class="tab-label">Room Service</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tab Content Panels -->
+            <div class="amenity-content-wrapper">
+                <!-- Fine Dining Content -->
+                <div class="amenity-content active" id="content-dining">
+                    <div class="amenity-content-inner">
+                        <div class="amenity-image">
+                            <img src="images/amenity_fine_dining.png" alt="Fine Dining Restaurant">
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="amenity-details">
+                            <h3 class="amenity-content-title">Fine Dining Restaurant</h3>
+                            <p class="amenity-content-description">
+                                Indulge in an exquisite culinary journey at our signature restaurant. Our world-class chefs craft 
+                                <strong>authentic multi-cuisine delicacies</strong>, blending traditional recipes with contemporary presentations.
+                            </p>
+                            <p class="amenity-content-description">
+                                From <strong>North Indian classics</strong> to <strong>continental favorites</strong>, each dish is prepared 
+                                with the finest ingredients. The elegant ambiance, complemented by crystal chandeliers and warm lighting, 
+                                creates the perfect setting for memorable dining experiences.
+                            </p>
+                            <ul class="amenity-features">
+                                <li>Multi-cuisine menu with vegetarian & non-vegetarian options</li>
+                                <li>Private dining available for special occasions</li>
+                                <li>Live cooking stations for events</li>
+                                <li>Breakfast buffet 7:00 AM - 10:30 AM</li>
+                            </ul>
+                            <button class="amenity-cta-btn">View Menu</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Spa & Wellness Content -->
+                <div class="amenity-content" id="content-spa">
+                    <div class="amenity-content-inner">
+                        <div class="amenity-image">
+                            <img src="images/amenity_spa_wellness.png" alt="Spa & Wellness Center">
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="amenity-details">
+                            <h3 class="amenity-content-title">Spa & Wellness Center</h3>
+                            <p class="amenity-content-description">
+                                Escape into tranquility at our serene wellness sanctuary. Our <strong>professional therapists</strong> offer 
+                                rejuvenating treatments designed to restore your body and mind.
+                            </p>
+                            <p class="amenity-content-description">
+                                Experience the healing power of <strong>traditional Ayurvedic therapies</strong> combined with modern 
+                                spa techniques. From aromatherapy massages to deep tissue treatments, find your perfect path to relaxation.
+                            </p>
+                            <ul class="amenity-features">
+                                <li>Swedish & Ayurvedic massage therapies</li>
+                                <li>Aromatherapy & body wraps</li>
+                                <li>Couples treatment rooms</li>
+                                <li>Steam room & relaxation lounge</li>
+                            </ul>
+                            <button class="amenity-cta-btn">Book Treatment</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fitness Center Content -->
+                <div class="amenity-content" id="content-fitness">
+                    <div class="amenity-content-inner">
+                        <div class="amenity-image">
+                            <img src="images/amenity_fitness_center.png" alt="Fitness Center">
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="amenity-details">
+                            <h3 class="amenity-content-title">State-of-the-Art Fitness Center</h3>
+                            <p class="amenity-content-description">
+                                Maintain your fitness regime in our <strong>fully-equipped gymnasium</strong>. Featuring the latest 
+                                cardio and strength training equipment from premium brands.
+                            </p>
+                            <p class="amenity-content-description">
+                                Our fitness center offers <strong>panoramic city views</strong> and climate-controlled comfort. 
+                                Personal training sessions and yoga classes are available on request.
+                            </p>
+                            <ul class="amenity-features">
+                                <li>Latest cardio & weight training equipment</li>
+                                <li>Personal training on request</li>
+                                <li>Yoga mats & accessories provided</li>
+                                <li>Open 24 hours for guests</li>
+                            </ul>
+                            <button class="amenity-cta-btn">Explore Gym</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Conference Hall Content -->
+                <div class="amenity-content" id="content-conference">
+                    <div class="amenity-content-inner">
+                        <div class="amenity-image">
+                            <img src="images/amenity_conference.png" alt="Conference Hall">
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="amenity-details">
+                            <h3 class="amenity-content-title">Executive Conference Hall</h3>
+                            <p class="amenity-content-description">
+                                Host impressive <strong>corporate meetings and events</strong> in our sophisticated conference facilities. 
+                                Equipped with state-of-the-art audio-visual technology and high-speed connectivity.
+                            </p>
+                            <p class="amenity-content-description">
+                                Our flexible spaces accommodate <strong>intimate boardroom meetings to grand seminars</strong>. 
+                                Dedicated event coordinators ensure seamless execution of your business gatherings.
+                            </p>
+                            <ul class="amenity-features">
+                                <li>HD projectors & video conferencing</li>
+                                <li>Seating capacity: 20-200 guests</li>
+                                <li>Dedicated event coordinator</li>
+                                <li>Customized catering packages</li>
+                            </ul>
+                            <button class="amenity-cta-btn">Book Venue</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bar & Lounge Content -->
+                <div class="amenity-content" id="content-bar">
+                    <div class="amenity-content-inner">
+                        <div class="amenity-image">
+                            <img src="images/amenity_bar_lounge.png" alt="Bar & Lounge">
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="amenity-details">
+                            <h3 class="amenity-content-title">The Capitol Lounge & Bar</h3>
+                            <p class="amenity-content-description">
+                                Unwind in our sophisticated bar and lounge, where <strong>expert mixologists</strong> craft signature 
+                                cocktails and serve premium spirits from around the world.
+                            </p>
+                            <p class="amenity-content-description">
+                                The elegant ambiance with <strong>plush seating and ambient lighting</strong> creates the perfect 
+                                atmosphere for evening conversations. Enjoy live music on select weekends.
+                            </p>
+                            <ul class="amenity-features">
+                                <li>Premium whiskeys, wines & spirits</li>
+                                <li>Signature cocktails by expert mixologists</li>
+                                <li>Live music on weekends</li>
+                                <li>Open 6:00 PM - 11:30 PM</li>
+                            </ul>
+                            <button class="amenity-cta-btn">View Drinks Menu</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Room Service Content -->
+                <div class="amenity-content" id="content-roomservice">
+                    <div class="amenity-content-inner">
+                        <div class="amenity-image">
+                            <img src="images/amenity_room_service.png" alt="Room Service">
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="amenity-details">
+                            <h3 class="amenity-content-title">24-Hour In-Room Dining</h3>
+                            <p class="amenity-content-description">
+                                Experience <strong>luxury dining in the comfort of your room</strong>. Our 24-hour room service 
+                                delivers restaurant-quality cuisine directly to your doorstep.
+                            </p>
+                            <p class="amenity-content-description">
+                                From <strong>early morning breakfast</strong> to <strong>late-night cravings</strong>, our extensive 
+                                menu offers something for every palate. Special dietary requirements are catered to with care.
+                            </p>
+                            <ul class="amenity-features">
+                                <li>Full menu available around the clock</li>
+                                <li>Special breakfast-in-bed packages</li>
+                                <li>Dietary & allergy-friendly options</li>
+                                <li>Champagne & celebration packages</li>
+                            </ul>
+                            <button class="amenity-cta-btn">Order Now</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1943,6 +2212,117 @@
             
             // Start autoplay
             startAutoPlay();
+        })();
+    </script>
+    
+    <!-- Inline booking popup backup for file:// protocol compatibility -->
+    <script>
+        (function() {
+            const overlay = document.getElementById('booking-popup-overlay');
+            const popup = document.getElementById('booking-popup');
+            const openBtn = document.getElementById('open-booking-popup');
+            const backBtn = document.getElementById('booking-popup-back');
+            const counterBtns = document.querySelectorAll('.counter-btn');
+            
+            if (!overlay || !popup || !openBtn) return;
+            
+            let isOpen = false;
+            
+            function openPopup() {
+                isOpen = true;
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                requestAnimationFrame(function() {
+                    popup.classList.add('active');
+                });
+            }
+            
+            function closePopup() {
+                isOpen = false;
+                popup.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+            
+            // Open button
+            openBtn.addEventListener('click', openPopup);
+            
+            // Back button
+            if (backBtn) {
+                backBtn.addEventListener('click', closePopup);
+            }
+            
+            // Close on overlay click
+            overlay.addEventListener('click', function(e) {
+                if (e.target === overlay) {
+                    closePopup();
+                }
+            });
+            
+            // Close on Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && isOpen) {
+                    closePopup();
+                }
+            });
+            
+            // Counter buttons
+            counterBtns.forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    const targetId = btn.dataset.target;
+                    const valueEl = document.getElementById(targetId);
+                    if (!valueEl) return;
+                    
+                    let currentValue = parseInt(valueEl.textContent) || 1;
+                    const min = parseInt(btn.dataset.min) || 1;
+                    const max = parseInt(btn.dataset.max) || 10;
+                    
+                    if (btn.classList.contains('plus')) {
+                        if (currentValue < max) {
+                            valueEl.textContent = currentValue + 1;
+                        }
+                    } else if (btn.classList.contains('minus')) {
+                        if (currentValue > min) {
+                            valueEl.textContent = currentValue - 1;
+                        }
+                    }
+                });
+            });
+        })();
+    </script>
+    
+    <!-- Inline tabbed amenities functionality -->
+    <script>
+        (function() {
+            const tabs = document.querySelectorAll('.amenity-tab');
+            const contents = document.querySelectorAll('.amenity-content');
+            
+            if (!tabs.length || !contents.length) return;
+            
+            tabs.forEach(function(tab) {
+                tab.addEventListener('click', function() {
+                    const targetTab = this.dataset.tab;
+                    
+                    // Remove active from all tabs
+                    tabs.forEach(function(t) {
+                        t.classList.remove('active');
+                    });
+                    
+                    // Add active to clicked tab
+                    this.classList.add('active');
+                    
+                    // Hide all content panels
+                    contents.forEach(function(content) {
+                        content.classList.remove('active');
+                    });
+                    
+                    // Show target content panel
+                    const targetContent = document.getElementById('content-' + targetTab);
+                    if (targetContent) {
+                        targetContent.classList.add('active');
+                    }
+                });
+            });
         })();
     </script>
 </body>
