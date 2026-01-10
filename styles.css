@@ -313,7 +313,7 @@ img {
 }
 
 /* Elegant luxury overlay for text legibility */
-.hero-video-overlay {
+/* .hero-video-overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -328,7 +328,7 @@ img {
     );
     z-index: 2;
     pointer-events: none;
-}
+} */
 
 /* Responsive: Switch to mobile video on smaller screens */
 @media (max-width: 768px) {
@@ -930,7 +930,7 @@ img {
 
 /* Header scroll effect - Desktop: White luxury on scroll */
 .header.scrolled {
-    background: #b8a369;
+    background: #000000;
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(184, 163, 105, 0.15);
@@ -940,7 +940,7 @@ img {
 
 /* Desktop header scrolled text colors */
 .header.scrolled .nav-link {
-    color: #ffffff;
+    color: #b8a369;
     text-shadow: none;
 }
 
@@ -963,8 +963,8 @@ img {
 
 /* CTA button on scrolled header - maintain gold but adjust for white bg */
 .header.scrolled .cta-button {
-    background: linear-gradient(135deg, #1b1b1b 0%, #1b1b1b 100%);
-    color: var(--color-white);
+    background: linear-gradient(135deg, #b8a369 0%, #b8a369 100%);
+    color: var(--color-black);
     box-shadow: 0 4px 15px rgba(193, 127, 89, 0.3);
 }
 
